@@ -35,13 +35,13 @@ app.options('/', function (request, response) {
 	response.send({
 		name: "Parse Markdown",
 		description: "Converts Markdown to HTML.",
-		input: {
-			name: "markdown",
-			type: "string",
-			description: "Markdown-formatted content for transformation."
-		},
-		output: [{
-			name: "markdown",
+		inputs: [{
+					name: "markdown",
+					type: "string",
+					description: "Markdown-formatted content for transformation."
+		}],
+		outputs: [{
+			name: "html",
 			type: "string",
 			description: "HTML-converted data."
 		}]
