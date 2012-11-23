@@ -36,9 +36,9 @@ app.options('/', function (request, response) {
 		name: "Parse Markdown",
 		description: "Converts Markdown to HTML.",
 		inputs: [{
-					name: "markdown",
-					type: "string",
-					description: "Markdown-formatted content for transformation."
+			name: "markdown",
+			type: "string",
+			description: "Markdown-formatted content for transformation."
 		}],
 		outputs: [{
 			name: "html",
@@ -50,29 +50,29 @@ app.options('/', function (request, response) {
 
 app.post('/', function (request, response) {
 
-	if (!_.has(request.body, 'input')) {
+	if (!_.has(request.body, 'inputs')) {
 		exit('WebPipe "input" is missing or formatted incorrectly.');
 	}
 
-	var input = request.body.input;
-	var output = {
-		output: []
+	var inputs = request.body.inputs;
+	var outputs = {
+		outputs: []
 	};
-
+	
 	// Verify POST keys exist
-	if (!_.has(input, 'markdown')) {
+	if (!_.has(inputs, 'markdown')) {
 		exit('Email "to" address is missing.');
 	}
-
-	var html = marked(input.markdown);
+	
+	var html = marked(inputs.markdown);
 	if (!html) {
 		console.log('Failed to convert markdown.');
 		response.send(500);
 	} else {
-		output.output.push({
-			markdown: html
+		outputs.outputs.push({
+			html: html
 		});
-		response.json(output);
+		response.json(outputs);
 	}
 });
 
