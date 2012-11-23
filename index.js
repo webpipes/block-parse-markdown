@@ -50,11 +50,11 @@ app.options('/', function (request, response) {
 
 app.post('/', function (request, response) {
 
-	if (!_.has(request.body, 'inputs')) {
+	if (!_.has(request.body, 'inputs') && isArray(request.body.inputs)) {
 		exit('WebPipe "input" is missing or formatted incorrectly.');
 	}
 
-	var inputs = request.body.inputs;
+	var inputs = request.body.inputs[0];
 	var outputs = {
 		outputs: []
 	};
