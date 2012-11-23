@@ -61,7 +61,7 @@ app.post('/', function (request, response) {
 	
 	// Verify POST keys exist
 	if (!_.has(inputs, 'markdown')) {
-		exit('Email "to" address is missing.');
+		exit('Input is missing required "markdown" content.');
 	}
 	
 	var html = marked(inputs.markdown);
