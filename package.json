@@ -6,7 +6,7 @@
         "npm": "1.1.9"
     },
     "dependencies": {
-        "node-webpipe": "0.0.1",
+        "node-webpipe": "0.0.2",
         "underscore": "1.4.2",
         "marked": "0.2.5"
     }
